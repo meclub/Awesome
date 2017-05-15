@@ -15,3 +15,4 @@
 ## 工程搭建
 - scrapy startproject jobs
 - 创建一个jobs.py，实现JobsSpider类
+- scrapy crawl JobsSpider
