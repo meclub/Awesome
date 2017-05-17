@@ -67,8 +67,8 @@ links = response.xpath('//a[contains(@href, "image")]')
 response.xpath('//a[contains(@href, "image")]/text()').re(r'Name:\s*(.*)')
 ```
 
-# 例如在XPath的 starts-with() 或 contains() 无法满足需求时， test() 函数可以非常有用。
-# 例如在列表中选择有”class”元素且结尾为一个数字的链接:
+## test函数
+例如在XPath的 starts-with() 或 contains() 无法满足需求时， test() 函数可以非常有用。例如在列表中选择有”class”元素且结尾为一个数字的链接:
 ```
 doc = """
 <div>
@@ -86,12 +86,13 @@ sel.xpath('//li//@href').extract()
 sel.xpath('//li[re:test(@class, "item-\d$")]//@href').extract()
 ```
 
-## 当你想要使用文本内容作为XPath函数的参数时，避免使用.//text()，采用.来替代。
+## text使用
+- 当你想要使用文本内容作为XPath函数的参数时，避免使用.//text()，采用.来替代。
 ```
 sel.xpath("//a[contains(., 'Next Page')]").extract()
 ```
 
-## 使用.//text()没有结果
+- 使用.//text()没有结果
 ```
 sel.xpath("//a[contains(.//text(), 'Next Page')]").extract()
 ```
