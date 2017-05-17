@@ -16,11 +16,13 @@ class JobsSpider(scrapy.Spider):
 
     def parse_page(self, response):
         selector = Selector(response)
-        newlist = selector.xpath("//*[@class='newlist']")
+        newlist = selector.xpath("//table[@class='newlist']")
         # print(newlist)
         for item in newlist:
             if isinstance(item, Selector):
-                zwmc = item.xpath("//td[@class='zwmc']/div/a/text()").extract_first()
-                gsmc = item.xpath("//td[@class='gsmc']/a/text()").extract_first()
-                print("zwmc:", zwmc)
+                zwmc = item.xpath(".//td[@class='zwmc']/div/a/text()").extract()
+                gsmc = item.xpath(".//td[@class='gsmc']/a/text()").extract()
+                zwyx = item.xpath(".//td[@class='zwyx']/text()").extract()
+                print('zwmc:', zwmc)
                 print("gsmc:", gsmc)
+                print("zwyx:", zwyx)
