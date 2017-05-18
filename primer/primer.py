@@ -3,6 +3,8 @@
 from __future__ import print_function
 
 # Basic type
+import functools
+
 a = -8000
 b = 0x123
 c = 1.2e5
@@ -203,3 +205,26 @@ print(sorted(['abbc', 'DDDD', 'eeere'], cmp_ignore_case))
 
 # 匿名函数
 print(map(lambda x: x * x, [1, 2, 3, 6]))
+
+
+# 装饰器
+def logDecorator(func):
+    def wrapper(*args, **kw):
+        print('call %s before' % func.__name__)
+        func(*args, **kw)
+        print('call %s after' % func.__name__)
+
+    return wrapper
+
+
+@logDecorator
+def log(s):
+    print(s)
+
+
+log("test")
+
+# 偏函数
+int2 = functools.partial(int, base=2)
+print(int('100000'))
+print(int2('100000'))
