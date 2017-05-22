@@ -31,6 +31,9 @@ index-url=http://pypi.douban.com/simple
 - sudo pip install scrapy --trusted-host pypi.douban.com
 - sudo apt-get install crawl
 
+## pymongo
+sudo pip3 install pymongo --trusted-host pypi.douban.com
+
 
 
 

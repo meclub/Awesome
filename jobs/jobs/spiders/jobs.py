@@ -3,6 +3,8 @@ import scrapy
 from scrapy import Request
 from scrapy import Selector
 
+# from jobs.jobs.items import JobsItem
+
 
 class JobsSpider(scrapy.Spider):
     name = "JobsSpider"
@@ -17,12 +19,27 @@ class JobsSpider(scrapy.Spider):
     def parse_page(self, response):
         selector = Selector(response)
         newlist = selector.xpath("//table[@class='newlist']")
-        # print(newlist)
-        for item in newlist:
-            if isinstance(item, Selector):
-                zwmc = item.xpath(".//td[@class='zwmc']/div/a/text()").extract()
-                gsmc = item.xpath(".//td[@class='gsmc']/a/text()").extract()
-                zwyx = item.xpath(".//td[@class='zwyx']/text()").extract()
-                print('zwmc:', zwmc)
-                print("gsmc:", gsmc)
-                print("zwyx:", zwyx)
+        for job in newlist:
+            if isinstance(job, Selector):
+                keywords = job.xpath(".//td[@class='zwmc']/div/a/b/text()").extract()
+                name = keywords + job.xpath(".//td[@class='zwmc']/div/a/text()").extract()
+                link = job.xpath(".//td[@class='zwmc']/div/a/@href").extract()
+                company = job.xpath(".//td[@class='gsmc']/a/text()").extract()
+                salary = job.xpath(".//td[@class='zwyx']/text()").extract()
+                site = job.xpath(".//td[@class='gzdd']/text()").extract()
+                time = job.xpath(".//td[@class='gxsj']/span/text()").extract()
+                print('name:', name)
+                print('link:', link)
+                print("company:", company)
+                print("salary:", salary)
+                print("site:", site)
+                print("time:", time)
+
+                # item = JobsItem()
+                # item['name'] = name = keywords + job.xpath(".//td[@class='zwmc']/div/a/text()").extract()
+                # item['link'] = link = job.xpath(".//td[@class='zwmc']/div/a/@href").extract()
+                # item['company'] = company = job.xpath(".//td[@class='gsmc']/a/text()").extract()
+                # item['salary'] = salary = job.xpath(".//td[@class='zwyx']/text()").extract()
+                # item['site'] = site = job.xpath(".//td[@class='gzdd']/text()").extract()
+                # item['time'] = time = job.xpath(".//td[@class='gxsj']/span/text()").extract()
+                # yield item
