@@ -5,6 +5,8 @@ from __future__ import print_function
 # Basic type
 import functools
 
+from bean.bean import PythonBean
+
 a = -8000
 b = 0x123
 c = 1.2e5
@@ -222,9 +224,13 @@ def log(s):
     print(s)
 
 
-log("test")
+log("bean")
 
 # 偏函数
 int2 = functools.partial(int, base=2)
 print(int('100000'))
 print(int2('100000'))
+
+# python class
+bean = PythonBean()
+print(bean.a)

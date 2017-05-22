@@ -3,8 +3,7 @@ import scrapy
 from scrapy import Request
 from scrapy import Selector
 
-# from jobs.jobs.items import JobsItem
-
+# from jobs.items import JobsItem
 
 class JobsSpider(scrapy.Spider):
     name = "JobsSpider"
@@ -18,16 +17,16 @@ class JobsSpider(scrapy.Spider):
 
     def parse_page(self, response):
         selector = Selector(response)
-        newlist = selector.xpath("//table[@class='newlist']")
-        for job in newlist:
-            if isinstance(job, Selector):
-                keywords = job.xpath(".//td[@class='zwmc']/div/a/b/text()").extract()
-                name = keywords + job.xpath(".//td[@class='zwmc']/div/a/text()").extract()
-                link = job.xpath(".//td[@class='zwmc']/div/a/@href").extract()
-                company = job.xpath(".//td[@class='gsmc']/a/text()").extract()
-                salary = job.xpath(".//td[@class='zwyx']/text()").extract()
-                site = job.xpath(".//td[@class='gzdd']/text()").extract()
-                time = job.xpath(".//td[@class='gxsj']/span/text()").extract()
+        new_list = selector.xpath("//table[@class='newlist']")
+        for new_job in new_list:
+            if isinstance(new_job, Selector):
+                keywords = new_job.xpath(".//td[@class='zwmc']/div/a/b/text()").extract()
+                name = keywords + new_job.xpath(".//td[@class='zwmc']/div/a/text()").extract()
+                link = new_job.xpath(".//td[@class='zwmc']/div/a/@href").extract()
+                company = new_job.xpath(".//td[@class='gsmc']/a/text()").extract()
+                salary = new_job.xpath(".//td[@class='zwyx']/text()").extract()
+                site = new_job.xpath(".//td[@class='gzdd']/text()").extract()
+                time = new_job.xpath(".//td[@class='gxsj']/span/text()").extract()
                 print('name:', name)
                 print('link:', link)
                 print("company:", company)
