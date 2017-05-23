@@ -17,6 +17,8 @@
 - 创建一个jobs.py，实现JobsSpider类
 - scrapy crawl JobsSpider
 
+结果输出为文件：scrapy crawl JobsSpider -o items.json -t json
+
 ## ubuntu
 增加pip代理配置
 ```
@@ -33,6 +35,7 @@ index-url=http://pypi.douban.com/simple
 
 ## pymongo
 sudo pip3 install pymongo --trusted-host pypi.douban.com
+sudo apt-get install mongodb-server
 
 
 
