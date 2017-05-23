@@ -234,3 +234,8 @@ print(int2('100000'))
 # python class
 bean = PythonBean()
 print(bean.a)
+
+# array test
+company = ['珠海扬智电子科技有限公司']
+company_str = company[0]
+print(company)

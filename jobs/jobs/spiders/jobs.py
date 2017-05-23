@@ -22,11 +22,12 @@ class JobsSpider(scrapy.Spider):
         for job in new_list:
             if isinstance(job, Selector):
                 item = JobsItem()
-                keywords = job.xpath(".//td[@class='zwmc']/div/a/b/text()").extract()
-                item['name'] = keywords + job.xpath(".//td[@class='zwmc']/div/a/text()").extract()
-                item['link'] = job.xpath(".//td[@class='zwmc']/div/a/@href").extract()
-                item['company'] = job.xpath(".//td[@class='gsmc']/a/text()").extract()
-                item['salary'] = job.xpath(".//td[@class='zwyx']/text()").extract()
-                item['site'] = job.xpath(".//td[@class='gzdd']/text()").extract()
-                item['time'] = job.xpath(".//td[@class='gxsj']/span/text()").extract()
+                keywords = str(job.xpath(".//td[@class='zwmc']/div/a/b/text()").extract_first())
+                item['name'] = keywords + str(job.xpath(".//td[@class='zwmc']/div/a/text()").extract_first())
+                item['link'] = job.xpath(".//td[@class='zwmc']/div/a/@href").extract_first()
+                item['company'] = job.xpath(".//td[@class='gsmc']/a/text()").extract_first()
+                item['salary'] = job.xpath(".//td[@class='zwyx']/text()").extract_first()
+                item['site'] = job.xpath(".//td[@class='gzdd']/text()").extract_first()
+                item['time'] = job.xpath(".//td[@class='gxsj']/span/text()").extract_first()
+                print (item)
                 yield item
