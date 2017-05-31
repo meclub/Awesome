@@ -2,10 +2,14 @@
 
 from __future__ import print_function
 
+import types
+
+import module
+from module import Bike
+from module import MountainBike
+
 # Basic type
 import functools
-
-from bean.bean import PythonBean
 
 a = -8000
 b = 0x123
@@ -231,11 +235,43 @@ int2 = functools.partial(int, base=2)
 print(int('100000'))
 print(int2('100000'))
 
-# python class
-bean = PythonBean()
-print(bean.a)
-
-# array test
+# Array
 company = ['珠海扬智电子科技有限公司']
 company_str = company[0]
 print(company)
+
+# Module
+module.test()
+
+# Class
+bike = Bike("美利达", 1000)
+print(Bike)
+print(bike)
+print(bike.name)
+print(bike.price)
+print(bike.get_level())
+
+mountainBike = MountainBike("捷安特", 1500)
+print(mountainBike.name)
+print(mountainBike.price)
+print(mountainBike.get_level())
+
+# Object type
+print(type(123))
+print(type('abc'))
+print(type(None))
+print(type(abs))
+print(type(bike))
+print("asd is type string:", type('asd') == types.StringType)
+print("111 is type string:", isinstance(111, str))
+
+print("bike isinstance MountainBike:", isinstance(bike, MountainBike))
+print("mountainBike isinstance Bike:", isinstance(mountainBike, Bike))
+
+print("dir bike", dir(bike))
+
+print("bike has attr price", hasattr(bike, 'price'))
+print("bike has attr road", hasattr(bike, 'road'))
+print("bike set attr price")
+setattr(bike, 'price', 600)
+print("bike has attr road", getattr(bike, 'price', 500))
