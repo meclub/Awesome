@@ -33,7 +33,8 @@ if __name__ == '__main__':
 
 
 class Bike(object):
-    pass
+    # 限制类的属性
+    __slots__ = ('name', 'price', '__level', '_color')
 
     def __init__(self, name, price):
         self.name = name
@@ -44,10 +45,24 @@ class Bike(object):
         print ("bike get level")
         return self.__level
 
+    @property
+    def color(self):
+        return self._color
 
-class MountainBike(Bike):
-    pass
+    @color.setter
+    def color(self, value):
+        self._color = value
 
+    def run(self):
+        print('Bike run')
+
+
+class RunnableMixin(object):
+    def run(self):
+        print('RunnableMixin run')
+
+
+class MountainBike(Bike, RunnableMixin):
     def get_level(self):
         super(MountainBike, self).get_level()
         return 2

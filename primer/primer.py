@@ -275,3 +275,15 @@ print("bike has attr road", hasattr(bike, 'road'))
 print("bike set attr price")
 setattr(bike, 'price', 600)
 print("bike has attr road", getattr(bike, 'price', 500))
+
+# slots
+print (bike.__slots__)
+
+# Property
+bike.color = 'green'
+print(bike.color)
+
+# 多重继承
+mountainBike.run()
+
+# 定制类
