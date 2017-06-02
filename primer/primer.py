@@ -7,6 +7,8 @@ import types
 import module
 from module import Bike
 from module import MountainBike
+from module import Fib
+from module import Github
 
 # Basic type
 import functools
@@ -286,4 +288,16 @@ print(bike.color)
 # 多重继承
 mountainBike.run()
 
-# 定制类
+# 定制类, 例如str, iter, getitem,
+print (bike)
+print ("Fib 100:")
+for n in Fib():
+    print(n)
+
+# getattr
+print(Github().user.avater)
+print(Github().users('kylingo').repos)
+
+# callable
+a = Github()
+a()

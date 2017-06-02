@@ -41,6 +41,10 @@ class Bike(object):
         self.price = price
         self.__level = 1
 
+    # 打印一个实例
+    def __str__(self):
+        return 'Bike object (name = %s)' % self.name
+
     def get_level(self):
         print ("bike get level")
         return self.__level
@@ -66,3 +70,34 @@ class MountainBike(Bike, RunnableMixin):
     def get_level(self):
         super(MountainBike, self).get_level()
         return 2
+
+
+class Fib(object):
+    def __init__(self):
+        self.a, self.b = 0, 1
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        self.a, self.b = self.b, self.a + self.b
+        if self.a > 100:
+            raise StopIteration
+        return self.a
+
+
+class Github(object):
+    def __init__(self, path=''):
+        self._path = path
+
+    def __getattr__(self, path):
+        return Github('%s/%s' % (self._path, path))
+
+    def __str__(self):
+        return self._path
+
+    def users(self, name):
+        return Github('%s/users/%s' % (self._path, name))
+
+    def __call__(self, *args, **kwargs):
+        print ("Hello, github")
