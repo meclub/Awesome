@@ -3,6 +3,7 @@
 from __future__ import print_function
 
 import types
+import logging
 
 import module
 from module import Bike
@@ -279,7 +280,7 @@ setattr(bike, 'price', 600)
 print("bike has attr road", getattr(bike, 'price', 500))
 
 # slots
-print (bike.__slots__)
+print(bike.__slots__)
 
 # Property
 bike.color = 'green'
@@ -289,8 +290,8 @@ print(bike.color)
 mountainBike.run()
 
 # 定制类, 例如str, iter, getitem,
-print (bike)
-print ("Fib 100:")
+print(bike)
+print("Fib 100:")
 for n in Fib():
     print(n)
 
@@ -301,3 +302,29 @@ print(Github().users('kylingo').repos)
 # callable
 a = Github()
 a()
+
+# Exception
+try:
+    print('try...')
+    r = 10 / 0
+except StandardError as e:
+    print('exception:', e)
+    logging.exception(e)
+finally:
+    print('finally')
+
+
+class FooError(StandardError):
+    pass
+
+
+def foo(s):
+    n = int(s)
+    if n == 0:
+        raise FooError("invalid value: %s", s)
+    print("foo", 10 / n)
+    return 10 / n
+
+
+# foo(0)
+foo(1)
