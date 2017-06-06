@@ -4,6 +4,9 @@ from __future__ import print_function
 
 import types
 import logging
+import os
+
+import shutil
 
 import module
 from module import Bike
@@ -326,5 +329,50 @@ def foo(s):
     return 10 / n
 
 
-# foo(0)
+# foo
 foo(1)
+
+# File
+path = './python.txt'
+with open(path, 'w') as f:
+    f.write("hello")
+
+with open(path, 'r') as f:
+    print("file:", f.read())
+
+# os
+print ('os name:', os.uname())
+print ('os environ:', os.environ)
+print ('os path:', os.getenv('PATH'))
+
+# dir
+print ('os current path:', os.path.abspath('.'))
+new_path = os.path.join('.', 'test')
+if not os.path.exists(new_path):
+    os.makedirs(new_path)
+    os.removedirs(new_path)
+else:
+    os.removedirs(new_path)
+
+# file split
+path_array = os.path.split(path)
+suffix_array = os.path.splitext(path)
+print ('file name:', path_array[1])
+print ('file suffix:', suffix_array[1])
+
+# shutil
+copy_path = './python_copy.txt'
+if not os.path.exists(copy_path):
+    shutil.copyfile(path, copy_path)
+    os.remove(copy_path)
+else:
+    os.remove(copy_path)
+
+# rename
+rename_path = './python_new.txt'
+os.rename(path, rename_path)
+os.remove(rename_path)
+
+# filter
+list_file = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.py']
+print ('current list file:', list_file)
