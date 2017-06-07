@@ -9,3 +9,4 @@ captures/
 .classpath
 *.iml
 local.properties
+*.pyc
