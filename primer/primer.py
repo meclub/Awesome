@@ -5,7 +5,7 @@ from __future__ import print_function
 import types
 import logging
 import os
-
+import pickle
 import shutil
 
 import module
@@ -341,12 +341,12 @@ with open(path, 'r') as f:
     print("file:", f.read())
 
 # os
-print ('os name:', os.uname())
-print ('os environ:', os.environ)
-print ('os path:', os.getenv('PATH'))
+print('os name:', os.uname())
+print('os environ:', os.environ)
+print('os path:', os.getenv('PATH'))
 
 # dir
-print ('os current path:', os.path.abspath('.'))
+print('os current path:', os.path.abspath('.'))
 new_path = os.path.join('.', 'test')
 if not os.path.exists(new_path):
     os.makedirs(new_path)
@@ -357,8 +357,8 @@ else:
 # file split
 path_array = os.path.split(path)
 suffix_array = os.path.splitext(path)
-print ('file name:', path_array[1])
-print ('file suffix:', suffix_array[1])
+print('file name:', path_array[1])
+print('file suffix:', suffix_array[1])
 
 # shutil
 copy_path = './python_copy.txt'
@@ -375,4 +375,16 @@ os.remove(rename_path)
 
 # filter
 list_file = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.py']
-print ('current list file:', list_file)
+print('current list file:', list_file)
+
+# picking
+d = dict(name='blob', age=20, score=88)
+dump_file = open('./dump.txt', 'w')
+pickle.dump(d, dump_file)
+dump_file.close()
+print ("pickle dump file:", d)
+
+dump_file = open('./dump.txt', 'r')
+d = pickle.load(dump_file)
+dump_file.close()
+print ("pickle load file:", d)
