@@ -21,3 +21,5 @@ class BeautySpider(scrapy.Spider):
             item['count'] = beauty.xpath(".//dd/span/text()").extract_first().strip().replace('(', '').replace(')', '')
             item['date'] = beauty.xpath(".//div[@class='nmark']/span[@class='date']/text()").extract_first()
             yield item
+
+
