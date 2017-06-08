@@ -388,3 +388,6 @@ dump_file = open('./dump.txt', 'r')
 d = pickle.load(dump_file)
 dump_file.close()
 print ("pickle load file:", d)
+# remove dump file
+os.remove('./dump.txt')
+

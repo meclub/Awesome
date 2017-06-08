@@ -1,6 +1,6 @@
-# Awesome
+# Python开发环境
 
-## Mac网络爬虫环境搭建
+## Mac环境
 **下载pip**
 - https://pip.readthedocs.io/en/stable/installing/#install-pip
 - python get-pip.py
@@ -12,14 +12,14 @@
 - pip install --upgrade pip
 - pip install scrapy
 
-## 工程搭建
+## Scrapy环境
 - scrapy startproject jobs
 - 创建一个jobs.py，实现JobsSpider类
 - scrapy crawl JobsSpider
 
 结果输出为文件：scrapy crawl JobsSpider -o items.json -t json
 
-## ubuntu
+## Ubuntu环境
 增加pip代理配置
 ```
 cat ~/.pip/pip.conf
