@@ -4,6 +4,7 @@ import zipfile
 
 
 def zip_dir(dirname, zipfilename):
+    filelist = []
     # Check input ...
     fulldirname = os.path.abspath(dirname)
     fullzipfilename = os.path.abspath(zipfilename)

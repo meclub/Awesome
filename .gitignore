@@ -11,3 +11,5 @@ captures/
 local.properties
 *.pyc
 *.jpg
+*.zip
+*.tar.gz

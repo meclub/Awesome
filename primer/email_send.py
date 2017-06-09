@@ -15,22 +15,22 @@ def _format_addr(s):
 # from_addr = raw_input('From: ')
 # password = raw_input('Password: ')
 # to_addr = raw_input('To: ')
-# smtp_server = raw_input('SMTP server: ')
+# smtp_server = raw_input('SMTP server: ')join
 
 from_addr = '821064838@qq.com'
 password = raw_input('Password: ')
-to_addr = 'hntangqi374@163.com'
+to_addr = ['hntangqi374@163.com', '821064838@qq.com']
 smtp_server = 'smtp.qq.com'
 
 msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
 msg['From'] = _format_addr(u'七哥 <%s>' % from_addr)
-msg['To'] = _format_addr(u'<%s>' % to_addr)
+msg['To'] = _format_addr(u'<%s>' % ','.join(to_addr))
 msg['Subject'] = Header(u'来自Python星球的问候……', 'utf-8').encode()
 
 print ('send email start')
 server = SMTP_SSL(smtp_server)
 server.set_debuglevel(1)
 server.login(from_addr, password)
-server.sendmail(from_addr, [to_addr], msg.as_string())
+server.sendmail(from_addr, to_addr, msg.as_string())
 server.quit()
 print ('send email end')
