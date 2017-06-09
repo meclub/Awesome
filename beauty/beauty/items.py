@@ -16,3 +16,11 @@ class BeautyItem(scrapy.Item):
     count = scrapy.Field()
     date = scrapy.Field()
     pass
+
+
+class BeautyDetailItem(scrapy.Item):
+    # define the fields for your item here like:
+    title = scrapy.Field()
+    link = scrapy.Field()
+    img = scrapy.Field()
+    pass
