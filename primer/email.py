@@ -17,10 +17,10 @@ def _format_addr(s):
 # to_addr = raw_input('To: ')
 # smtp_server = raw_input('SMTP server: ')join
 
-from_addr = '821064838@qq.com'
+from_addr = 'hntangqi374@163.com'
 password = raw_input('Password: ')
-to_addr = ['hntangqi374@163.com', '821064838@qq.com']
-smtp_server = 'smtp.qq.com'
+to_addr = ['hntangqi374@163.com']
+smtp_server = 'smtp.163.com'
 
 msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
 msg['From'] = _format_addr(u'七哥 <%s>' % from_addr)

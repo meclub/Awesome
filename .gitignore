@@ -13,3 +13,4 @@ local.properties
 *.jpg
 *.zip
 *.tar.gz
+.scrapy/

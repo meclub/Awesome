@@ -12,10 +12,10 @@ import requests
 
 from .items import BeautyItem
 from .items import BeautyDetailItem
+from ..share import ShareBeauty
 
 
 def download_img(url, dir_path, img_name):
-    print ('down_load:')
     req_timeout = 20
     try:
         res = requests.get(url, timeout=req_timeout)
@@ -64,3 +64,12 @@ class BeautyPipeline(object):
             # return process_beauty(item)
         if isinstance(item, BeautyDetailItem):
             return process_beauty_detail(item)
+
+    def open_spider(self, spider):
+        print ('open_spider')
+
+    def close_spider(self, spider):
+        print('close_spider')
+        share_beauty = ShareBeauty();
+        share_beauty.share()
+        print('share')
