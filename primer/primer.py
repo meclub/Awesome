@@ -7,6 +7,7 @@ import logging
 import os
 import pickle
 import shutil
+from collections import namedtuple, deque, defaultdict
 
 import module
 from module import Bike
@@ -382,12 +383,31 @@ d = dict(name='blob', age=20, score=88)
 dump_file = open('./dump.txt', 'w')
 pickle.dump(d, dump_file)
 dump_file.close()
-print ("pickle dump file:", d)
+print("pickle dump file:", d)
 
 dump_file = open('./dump.txt', 'r')
 d = pickle.load(dump_file)
 dump_file.close()
-print ("pickle load file:", d)
+print("pickle load file:", d)
 # remove dump file
 os.remove('./dump.txt')
 
+# Intern module
+# namedtuple
+Point = namedtuple('Point', ['x', 'y'])
+point = Point(1, 2)
+print('namedtuple', point)
+print(point.x)
+print(point.y)
+
+# deque
+q = deque(['a', 'b', 'c'])
+q.append('d')
+q.appendleft('q')
+print(q)
+
+# defaultdict
+dd = defaultdict(lambda: 'N/A')
+dd['name'] = 'frank'
+print (dd['name'])
+print (dd['age'])
