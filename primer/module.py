@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # _*_ coding: utf-8 _*_
-
 'Test module'
 
 try:
@@ -101,3 +100,19 @@ class Github(object):
 
     def __call__(self, *args, **kwargs):
         print ("Hello, github")
+
+
+class MongoDb(object):
+    def transform(self, array, disable_key):
+        a = []
+        for i, item in enumerate(array):
+            b = []
+            for key, value in item.iteritems():
+                if key != disable_key:
+                    if i == 0:
+                        b.append(key.encode("utf-8"))
+                    else:
+                        b.append(value.encode("utf-8"))
+            a.append(b)
+
+        return a

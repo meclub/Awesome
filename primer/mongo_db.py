@@ -4,6 +4,7 @@ from __future__ import print_function
 from __future__ import print_function
 import pymongo
 
+from module import MongoDb
 from thirdparty import makeHTML
 
 print('pymongo test')
@@ -33,17 +34,18 @@ for item in item_all:
 # remove
 # connection.remove()
 
-
 # make html table
-## 数据需要重新处理
-item_one = connection.find_one()
-
 rows = connection.find()
-pageHead = makeHTML.head('Hello World')
-pageBody = makeHTML.body('Emergency Table System')
-html_table = makeHTML.table(rows).make()
-# print ('html_table:', html_table)
+print('rows:', rows)
+mongo_db = MongoDb()
+job_array = mongo_db.transform(rows, '_id')
+print('job_array:', job_array)
 
-# pageBodhy.addPiece(html_table)
-# page = makeHTML.page([pageHead, pageBody])
-# page.make()
+pageHead = makeHTML.head('每日工作推荐')
+pageBody = makeHTML.body('智联招聘')
+job_table = makeHTML.table(job_array).make()
+
+pageBody.addPiece(job_table)
+page = makeHTML.page([pageHead, pageBody])
+job_html = page.make()
+print('job_html:', job_html)
