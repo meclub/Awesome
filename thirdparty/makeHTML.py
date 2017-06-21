@@ -208,7 +208,7 @@ class page(part):
         print 'Content-type: text/html'
         print ''
 
-        print pageContent
+        return pageContent
 
 
 class styleSheet(part):

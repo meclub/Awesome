@@ -10,7 +10,7 @@ from thirdparty import makeHTML
 print('pymongo test')
 client = pymongo.MongoClient('localhost', 27017)
 db = client.scrapy
-connection = db.jobs
+collection = db.jobs
 
 # insert
 # connection.insert({'company': '北京远特科技股份有限公司',
@@ -25,8 +25,8 @@ connection = db.jobs
 # item_one = connection.find_one()
 # print('item_one', item_one)
 
-count = connection.find().count()
-item_all = connection.find()
+count = collection.find().count()
+item_all = collection.find()
 print('count', count)
 for item in item_all:
     print('item', item)
@@ -35,7 +35,7 @@ for item in item_all:
 # connection.remove()
 
 # make html table
-rows = connection.find()
+rows = collection.find()
 print('rows:', rows)
 mongo_db = MongoDb()
 job_array = mongo_db.transform(rows, '_id')
