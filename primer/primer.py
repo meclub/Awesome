@@ -2,12 +2,13 @@
 
 from __future__ import print_function
 
+import base64
 import types
 import logging
 import os
 import pickle
 import shutil
-from collections import namedtuple, deque, defaultdict
+from collections import namedtuple, deque, defaultdict, OrderedDict, Counter
 
 import module
 from module import Bike
@@ -409,5 +410,29 @@ print(q)
 # defaultdict
 dd = defaultdict(lambda: 'N/A')
 dd['name'] = 'frank'
-print (dd['name'])
-print (dd['age'])
+print(dd['name'])
+print(dd['age'])
+
+# OrderedDict
+d = dict([('a', 1), ('b', 2), ('c', 3)])
+od = OrderedDict([('a', 1), ('b', 2), ('c', 3)])
+print('d:', d)
+print('od:', od)
+print('od.key:', od.keys())
+
+# Counter
+counter = Counter()
+for ch in 'Hello python':
+    counter[ch] = counter[ch] + 1
+print(counter)
+
+# base64
+b64 = base64.b64encode('kylingo')
+print('b64:', b64)
+
+
+def ba64(ba64_str):
+    return base64.b64decode(ba64_str + '=' * (4 - len(ba64_str) % 4))
+
+c64 = ba64('a3lsaW5nbw')
+print('c64:', c64)
