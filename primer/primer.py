@@ -3,6 +3,8 @@
 from __future__ import print_function
 
 import base64
+import hashlib
+import struct
 import types
 import logging
 import os
@@ -434,5 +436,28 @@ print('b64:', b64)
 def ba64(ba64_str):
     return base64.b64decode(ba64_str + '=' * (4 - len(ba64_str) % 4))
 
+
 c64 = ba64('a3lsaW5nbw')
 print('c64:', c64)
+
+# struct
+str_pack = struct.pack('>I', 10240090)
+print('str_pack:', str_pack)
+
+array_unpack = struct.unpack_from('>I', str_pack)
+print('int_unpack', array_unpack)
+
+str_bmp = '\x42\x4d\x38\x8c\x0a\x00\x00\x00\x00\x00\x36\x00\x00\x00\x28\x00\x00\x00\x80\x02\x00\x00\x68\x01\x00\x00\x01\x00\x18\x00'
+array_bmp = struct.unpack('<ccIIIIIIHH', str_bmp)
+print('array_bmp:', array_bmp)
+
+# hashlib
+md5 = hashlib.md5()
+md5.update('kylinggo')
+print("kylingo md5:", md5.hexdigest())
+
+sha1 = hashlib.sha1()
+sha1.update('kylinggo')
+print("kylingo sha1:", sha1.hexdigest())
+
+# 加盐，加用户名，实现密码的md5加密，更安全
