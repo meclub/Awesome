@@ -12,6 +12,8 @@ import pickle
 import shutil
 from collections import namedtuple, deque, defaultdict, OrderedDict, Counter
 
+import itertools
+
 import module
 from module import Bike
 from module import MountainBike
@@ -461,3 +463,43 @@ sha1.update('kylinggo')
 print("kylingo sha1:", sha1.hexdigest())
 
 # 加盐，加用户名，实现密码的md5加密，更安全
+
+# itertools
+iter_count = itertools.count(1)
+print('itertools count')
+for i in iter_count:
+    print(i)
+    if i == 100:
+        print('i == 100 break')
+        break
+
+cs = itertools.cycle('ABCDEFG')
+print('itertools cycle')
+for i, c in enumerate(cs):
+    print(c)
+    if i == 100:
+        print('i == 100 break')
+        break
+
+ir = itertools.repeat('AB', 10)
+print('itertools repeat')
+for c in ir:
+    print(c)
+
+iter_count = itertools.count(1)
+ns = itertools.takewhile(lambda x_count: x_count < 10, iter_count)
+print('itertools takewhile')
+for n in ns:
+    print(n)
+
+print('itertools chain')
+for c in itertools.chain('gank', 'carry'):
+    print(c)
+
+print('itertools groupby')
+for key, group in itertools.groupby('aaacccedddf'):
+    print(key, list(group))
+
+print('itertools imap')
+for x in itertools.imap(lambda x, y: x * y, [10, 20, 40], itertools.count(1)):
+    print(x)
