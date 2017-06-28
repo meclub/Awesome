@@ -45,6 +45,9 @@ Linux数据库位置
 https://robomongo.org/
 ```
 
+## issue
+- scrapy 执行的时候没办法导入本地包
+
 
 
 

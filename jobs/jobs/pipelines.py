@@ -24,4 +24,8 @@ class JobsPipeline(object):
             self.connection.close()
 
     def close_spider(self, spider):
+        # Scrapy 导包存在问题，待修复
+        from jobs.startup import SendJob
+        send_job = SendJob()
+        send_job.send()
         pass

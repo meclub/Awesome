@@ -12,7 +12,7 @@ class SendEmail(object):
             Header(name, 'utf-8').encode(),
             addr.encode('utf-8') if isinstance(addr, unicode) else addr))
 
-    def send_email(self, msg):
+    def send_email(self, title, msg):
         from_addr = 'hntangqi374@163.com'
         password = raw_input('Password: ')
         to_addr = ['hntangqi374@163.com']
@@ -20,7 +20,7 @@ class SendEmail(object):
 
         msg['From'] = self._format_addr(u'七哥 <%s>' % from_addr)
         msg['To'] = self._format_addr(u'<%s>' % ','.join(to_addr))
-        msg['Subject'] = Header(u'来自Python星球的问候……', 'utf-8').encode()
+        msg['Subject'] = Header(title, 'utf-8').encode()
 
         print ('send email start')
         server = SMTP_SSL(smtp_server)
@@ -30,14 +30,13 @@ class SendEmail(object):
         server.quit()
         print ('send email end')
 
-    def send_html(self, html):
+    def send_html(self, title, html):
         msg = MIMEText(html, 'html', 'utf-8')
-        self.send_email(msg)
+        self.send_email(title, msg)
 
-    def send_text(self, text):
+    def send_text(self, title, text):
         msg = MIMEText(text, 'plain', 'utf-8')
-        self.send_email(msg)
-
+        self.send_email(title, msg)
 
 # send_email = SendEmail()
 # send_email.send_text("hello, send by Python..")
