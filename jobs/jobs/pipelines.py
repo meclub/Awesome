@@ -8,7 +8,7 @@ import pymongo
 
 class JobsPipeline(object):
     def __init__(self):
-        print ('init')
+        print('init')
         self.connection = pymongo.MongoClient('localhost', 27017)
         self.db = self.connection['scrapy']
         self.collection = self.db['jobs']

@@ -66,10 +66,10 @@ class BeautyPipeline(object):
             return process_beauty_detail(item)
 
     def open_spider(self, spider):
-        print ('open_spider')
+        print('open_spider')
 
     def close_spider(self, spider):
         print('close_spider')
-        share_beauty = ShareBeauty();
+        share_beauty = ShareBeauty()
         share_beauty.share()
         print('share')

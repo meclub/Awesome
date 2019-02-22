@@ -28,5 +28,5 @@ class JobsSpider(scrapy.Spider):
             item['salary'] = job.xpath(".//td[@class='zwyx']/text()").extract_first()
             item['site'] = job.xpath(".//td[@class='gzdd']/text()").extract_first()
             item['time'] = job.xpath(".//td[@class='gxsj']/span/text()").extract_first()
-            print (item)
+            print(item)
             yield item
