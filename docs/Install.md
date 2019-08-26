@@ -1,5 +1,8 @@
 # Python开发环境
 
+# IDE环境
+PyCharm注册码：http://idea.lanyus.com/
+
 ## Mac环境
 **下载pip**
 - https://pip.readthedocs.io/en/stable/installing/#install-pip
