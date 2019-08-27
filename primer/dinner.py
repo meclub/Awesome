@@ -8,11 +8,12 @@ schedule = sched.scheduler(time.time, time.sleep)
 
 
 def perform_command(cmd, delay):
+    schedule.enter(delay, 0, perform_command, (cmd, delay))
     os.system(cmd)
 
     cur_time = time.time()
-    print_log("perform_command cur_time:" + str(cur_time))
-    print_log("perform_command cmd:" + cmd + ", next task delay:" + str(delay))
+    print_log("perform_command time: " + time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(cur_time)))
+    print_log("perform_command cmd: " + cmd + ", next task delay: " + str(delay))
 
 
 def schedule_exe(cmd):
@@ -35,8 +36,8 @@ def get_schedule_time():
     else:
         value = (latest_hour - cur_hour + 24) * 3600 - cur_minute * 60
     schedule_time = cur_time + value
-    print_log("schedule_time:" + str(schedule_time))
-    print_log("schedule_time format:" + time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(schedule_time)))
+    # print_log("schedule_time:" + str(schedule_time))
+    print_log("schedule_time: " + time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(schedule_time)))
     return schedule_time
 
 
@@ -70,5 +71,5 @@ def init_log():
 logger = logging.getLogger("Dinner")
 init_log()
 
-print_log('Schedule dinner start')
+print_log('schedule dinner start !!!')
 schedule_exe("source ~/dinner.sh &")
